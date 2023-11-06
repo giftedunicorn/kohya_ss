@@ -40,11 +40,12 @@ from .library.class_sample_images import run_cmd_sample
 # )
 # from library.dataset_balancing_gui import gradio_dataset_balancing_tab
 
-from .library.custom_logging import setup_logging
+# from .library.custom_logging import setup_logging
+from common.log import logger as log
 # from library.localization_ext import add_javascript
 
 # Set up logging
-log = setup_logging()
+# log = setup_logging()
 
 # Setup command executor
 executor = CommandExecutor()

@@ -1,18 +1,19 @@
 # from tkinter import filedialog, Tk
 # from easygui import msgbox
 import os
-# import re
+import re
 # import gradio as gr
 # import easygui
 # import shutil
 # import sys
 import json
 
-from .custom_logging import setup_logging
+# from .custom_logging import setup_logging
+from common.log import logger as log
 # from datetime import datetime
 
 # Set up logging
-log = setup_logging()
+# log = setup_logging()
 
 folder_symbol = '\U0001f4c2'  # 📂
 refresh_symbol = '\U0001f504'  # 🔄
@@ -898,46 +899,46 @@ def verify_image_folder_pattern(folder_path):
         )
         return false_response
 
-#     # Create a regular expression pattern to match the required sub-folder names
-#     # The pattern should start with one or more digits (\d+) followed by an underscore (_)
-#     # After the underscore, it should match one or more word characters (\w+), which can be letters, numbers, or underscores
-#     # Example of a valid pattern matching name: 123_example_folder
-#     pattern = r'^\d+_\w+'
+    # Create a regular expression pattern to match the required sub-folder names
+    # The pattern should start with one or more digits (\d+) followed by an underscore (_)
+    # After the underscore, it should match one or more word characters (\w+), which can be letters, numbers, or underscores
+    # Example of a valid pattern matching name: 123_example_folder
+    pattern = r'^\d+_\w+'
 
-#     # Get the list of sub-folders in the directory
-#     subfolders = [
-#         os.path.join(folder_path, subfolder)
-#         for subfolder in os.listdir(folder_path)
-#         if os.path.isdir(os.path.join(folder_path, subfolder))
-#     ]
+    # Get the list of sub-folders in the directory
+    subfolders = [
+        os.path.join(folder_path, subfolder)
+        for subfolder in os.listdir(folder_path)
+        if os.path.isdir(os.path.join(folder_path, subfolder))
+    ]
 
-#     # Check the pattern of each sub-folder
-#     matching_subfolders = [
-#         subfolder
-#         for subfolder in subfolders
-#         if re.match(pattern, os.path.basename(subfolder))
-#     ]
+    # Check the pattern of each sub-folder
+    matching_subfolders = [
+        subfolder
+        for subfolder in subfolders
+        if re.match(pattern, os.path.basename(subfolder))
+    ]
 
-#     # Print non-matching sub-folders
-#     non_matching_subfolders = set(subfolders) - set(matching_subfolders)
-#     if non_matching_subfolders:
-#         log.error(
-#             f"The following folders do not match the required pattern <number>_<text>: {', '.join(non_matching_subfolders)}"
-#         )
-#         log.error(
-#             f'Please follow the folder structure documentation found at docs\image_folder_structure.md ...'
-#         )
-#         return false_response
+    # Print non-matching sub-folders
+    non_matching_subfolders = set(subfolders) - set(matching_subfolders)
+    if non_matching_subfolders:
+        log.error(
+            f"The following folders do not match the required pattern <number>_<text>: {', '.join(non_matching_subfolders)}"
+        )
+        log.error(
+            f'Please follow the folder structure documentation found at docs\image_folder_structure.md ...'
+        )
+        return false_response
 
-#     # Check if no sub-folders exist
-#     if not matching_subfolders:
-#         log.error(
-#             f'No image folders found in {folder_path}. Please follow the folder structure documentation found at docs\image_folder_structure.md ...'
-#         )
-#         return false_response
+    # Check if no sub-folders exist
+    if not matching_subfolders:
+        log.error(
+            f'No image folders found in {folder_path}. Please follow the folder structure documentation found at docs\image_folder_structure.md ...'
+        )
+        return false_response
 
-#     log.info(f'Valid image folder names found in: {folder_path}')
-#     return true_response
+    log.info(f'Valid image folder names found in: {folder_path}')
+    return true_response
 
 
 def SaveConfigFile(
