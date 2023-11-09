@@ -4,7 +4,7 @@ import math
 import os
 # import argparse
 from datetime import datetime
-from .library.common_gui import (
+from library.common_gui import (
     # get_file_path,
     # get_any_file_path,
     # get_saveasfile_path,
@@ -25,14 +25,14 @@ from .library.common_gui import (
 # from library.class_advanced_training import AdvancedTraining
 # from library.class_sdxl_parameters import SDXLParameters
 # from library.class_folders import Folders
-from .library.class_command_executor import CommandExecutor
+from library.class_command_executor import CommandExecutor
 # from library.tensorboard_gui import (
 #     gradio_tensorboard,
 #     start_tensorboard,
 #     stop_tensorboard,
 # )
 # from library.utilities import utilities_tab
-from .library.class_sample_images import run_cmd_sample
+from library.class_sample_images import run_cmd_sample
 # from library.class_lora_tab import LoRATools
 
 # from library.dreambooth_folder_creation_gui import (
@@ -40,7 +40,7 @@ from .library.class_sample_images import run_cmd_sample
 # )
 # from library.dataset_balancing_gui import gradio_dataset_balancing_tab
 
-# from .library.custom_logging import setup_logging
+# from library.custom_logging import setup_logging
 from common.log import logger as log
 # from library.localization_ext import add_javascript
 
